@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MACHICORO</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<!-- <div id="boxformenu"> -->
+		<div id="menu">
+			<div id="game1">
+				<h5 class="fontColor">Игрок 2</h5>
+				<button onclick="cube1x1()" id="g1" class="cube" disabled>
+					<img class="imgbtn" src="http://pngimg.com/uploads/dice/dice_PNG140.png" alt="" width="100%">
+				</button>
+				<button onclick="cube1x2()" id="gg1" class="cube" disabled>
+					<img class="imgbtn" src="http://pngimg.com/uploads/dice/dice_PNG136.png" alt="">
+				</button>	
+
+				<div>
+					<span class="fontColor" id="money1"></span>
+					<img class="imgbtn" src="images/монета.png" alt="">
+				</div>
+			</div>
+
+				<button onclick="hod()" id="btnhod" >
+					<span class="font">Х</span><br>
+					<span class="font">О</span><br>
+					<span class="font">Д</span><br>
+				</button>
+
+			<div id="game2">
+				<div>
+					<span class="fontColor" id="money2"></span>
+					<img class="imgbtn" src="images/монета.png" alt="">
+				</div>
+				<button onclick="cube2x2()" id="gg2" class="cube" disabled>
+					<img class="imgbtn" src="http://pngimg.com/uploads/dice/dice_PNG136.png" alt="" width="100%">
+				</button>
+				<button onclick="cube2x1()" id="g2" class="cube" disabled>
+					<img class="imgbtn" src="http://pngimg.com/uploads/dice/dice_PNG140.png" alt="" width="100%">
+				</button>
+				<h5 class="fontColor">Игрок 1</h5>
+			</div>
+		</div>
+<div id="all">
+	<!-- Поле первого игрока -->
+		<div  class="gamer" id="gamer1">
+			<img class="img" src="images/ПЕКАРНЯ.png" alt=""><div class="z-index" id="pecarCol-vo1"></div>
+			<img class="img" src="images/ПШЕНИЧНОЕ ПОЛЕ.png" alt=""><div class="z-index" id="poleCol-vo1"></div>
+			<div class="z-index" id="shopCol-vo1"></div>
+			<div class="z-index" id="forestCol-vo1"></div>
+			<div class="z-index" id="farmCol-vo1"></div>
+			<div class="z-index" id="mineCol-vo1"></div>
+			<div class="z-index" id="factoryCol-vo1"></div>
+			<div class="z-index" id="cafeCol-vo1"></div>
+			<div class="z-index" id="appleCol-vo1"></div>
+			<div class="z-index" id="cusCol-vo1"></div>
+			<div class="z-index" id="cheeseCol-vo1"></div>
+			<div class="z-index" id="vegetableCol-vo1"></div>
+		</div>
+
+	<!-- Магазин карточек -->
+		<div id="pole">
+			<div class="box">
+				<img onclick="pecarBuy()" class="img" src="images/ПЕКАРНЯ.png" alt="">
+				<img onclick="shopBuy()" class="img" src="images/МАГАЗИН.png" id="shop">
+				<img onclick="factoryBuy()" class="img" src="images/МЕБЕЛЬНАЯ ФАБРИКА.png" id="factory">
+				<img onclick="cheeseBuy()" class="img" src="images/СЫРОВАРНЯ.png" alt="">
+				<img onclick="vegetableBuy()" class="img" src="images/ОВОЩНОЙ РЫНОК.png" alt="">
+				<img onclick="poleBuy()" class="img" src="images/ПШЕНИЧНОЕ ПОЛЕ.png" alt="">
+				<img onclick="forestBuy()" class="img" src="images/ЛЕС.png" alt="">
+				<img onclick="farmBuy()" class="img" src="images/ФЕРМА.png" alt="">
+				<img onclick="mineBuy()" class="img" src="images/ШАХТА.png" alt="">	
+				<img onclick="appleBuy()" class="img" src="images/ЯБЛОНЕВЫЙ САД.png" alt="">
+				<img onclick="cafeBuy()" class="img" src="images/КАФЕ.png" alt="">
+				<img onclick="cusBuy()" class="img" src="images/ЗАКУСОЧНАЯ.png" alt="">
+				<img onclick="stadionBuy()" class="img" src="images/СТАДИОН.png" alt="">
+				<img onclick="teleBuy()" class="img" src="images/Телецентр.png" alt="">
+
+				<img onclick="vocBuy()" class="img" src="images/Вокзал оборот.png" alt="">
+				<img onclick="parkBuy()" class="img" src="images/Парк развлечений оборот.png" alt="">
+				<img onclick="tvBuy()" class="img" src="images/Телебашня оборот.png" alt="">
+				<img onclick="centerBuy()" class="img" src="images/Торговый центер оборот.png" alt="">
+			</div>
+		</div>
+	<!-- Поле второго игрока -->
+		
+		<div class="gamer" id="gamer2">
+			<img class="img" src="images/ПЕКАРНЯ.png" alt=""><div class="z-index" id="pecarCol-vo2"></div>
+			<img class="img" src="images/ПШЕНИЧНОЕ ПОЛЕ.png" alt=""><div class="z-index" id="poleCol-vo2"></div>
+			<div class="z-index" id="shopCol-vo2"></div>
+			<div class="z-index" id="forestCol-vo2"></div>
+			<div class="z-index" id="farmCol-vo2"></div>
+			<div class="z-index" id="mineCol-vo2"></div>
+			<div class="z-index" id="factoryCol-vo2"></div>
+			<div class="z-index" id="cafeCol-vo2"></div>
+			<div class="z-index" id="appleCol-vo2"></div>
+			<div class="z-index" id="cusCol-vo2"></div>
+			<div class="z-index" id="cheeseCol-vo2"></div>
+			<div class="z-index" id="vegetableCol-vo2"></div>
+		</div>
+</div>
+<script>
+	var g1 = document.getElementById('g1').disabled = true;
+	var g2 = document.getElementById('g2').disabled = false;
+
+// Кол-во денег
+	var money1 = 3;
+	var money2 = 3;
+
+// Место для выведения кол-ва денег
+	var moneygame1 = document.getElementById('money1');
+	var moneygame2 = document.getElementById('money2');
+
+	window.onload = function (){
+		moneygame2.innerHTML = money2;
+		moneygame1.innerHTML = money1;
+	}
+
+	var c2 = 0;
+	var c1 = 0;
+
+
+	// Активация/деактивация кнопок при смене хода
+	function hod(){
+		if (g1 == true){
+			document.getElementById('g2').disabled = true;
+			document.getElementById('gg2').disabled = true;
+			document.getElementById('g1').disabled = false;
+			document.getElementById('gg1').disabled = true;
+				if(vocsal1 == true){
+					document.getElementById('gg1').disabled = false;
+					document.getElementById('gg2').disabled = true;
+				}
+			g1 = document.getElementById('g1').disabled = false;
+			g2 = document.getElementById('g2').disabled = true;
+		}
+		else{
+			document.getElementById('g2').disabled = false;
+			document.getElementById('gg2').disabled = true;
+			document.getElementById('g1').disabled = true;
+			document.getElementById('gg1').disabled = true;
+				if(vocsal2 == true){
+					document.getElementById('gg1').disabled = true;
+					document.getElementById('gg2').disabled = false;
+				}
+			g1 = document.getElementById('g1').disabled = true;
+			g2 = document.getElementById('g2').disabled = false;
+		}
+	}
+
+// проверка наличия карточек у игроков при выпадении на кубике чисел
+	function cube1x1(){
+		var num1 = Math.floor(Math.random() * 6) + 1;
+		alert(num1);
+		// пекарня доход
+			if(num1 == 2){
+				money1 = money1 + pecar1;
+				moneygame1.innerHTML = money1;
+			}
+			else if(num1 == 3){
+				money1 = money1 + pecar1;
+				moneygame1.innerHTML = money1;
+			}
+		// пшеничное поле доход
+			if(num1 == 1){
+				money1 = money1 + ppole1;
+				money2 = money2 + ppole2;
+				moneygame1.innerHTML = money1;
+				moneygame2.innerHTML = money2;
+			}
+			// Магазин
+			if(num1 == 4){
+				money1 = money1 + shop1;
+				moneygame1.innerHTML = money1;
+			}
+			// лес
+			if(num1 == 5){
+				money1 = money1 + forest2;
+				money2 = money2 + forest2;
+				moneygame1.innerHTML = money1;
+				moneygame2.innerHTML = money2;
+			}
+			// Ферма
+			if(num1 == 2){
+				money1 = money1 + farm1;
+				money2 = money2 + farm2;
+				moneygame1.innerHTML = money1;
+				moneygame2.innerHTML = money2;
+			}
+			//кафе
+			if(num1 == 3){
+				if(money1 >= cafe2){
+					money2 += cafe2;
+					money1 -= cafe2;
+					moneygame2.innerHTML = money2;
+					moneygame1.innerHTML = money1;
+				}
+			}
+			//Стадион
+			if(num1 == 6){
+				if(money2 >= 2){
+					money2 -= stadion1;
+					money1 += stadion1;
+					moneygame2.innerHTML = money2;
+					moneygame1.innerHTML = money1;
+				}
+			}
+			//Телецентр
+			if(num1 == 6){
+				if(money1 >= 5){
+					money1 += tele1;
+					money2 -= tele1;
+					moneygame2.innerHTML = money2;
+					moneygame1.innerHTML = money1;
+				}
+			}
+			c1++;
+			if(c1 == 1){
+				document.getElementById('g1').disabled = true;
+				if(vocsal1 == true){
+					document.getElementById('gg1').disabled = true;
+				}
+				c1 = 0;
+			}		
+	}
+	function cube1x2(){
+		var num1 = Math.floor(Math.random() * (12-2+1) + 1);
+		alert(num1);
+		// пекарня доход
+			if(num1 == 2){
+				money1 = money1 + pecar1;
+				moneygame1.innerHTML = money1;
+			}
+			else if(num1 == 3){
+				money1 = money1 + pecar1;
+				moneygame1.innerHTML = money1;
+			}
+			// Магазин
+			if(num1 == 4){
+				money1 = money1 + shop1;
+				moneygame1.innerHTML = money1;
+			}
+			// Лес
+			if(num1 == 5){
+				money1 = money1 + forest2;
+				money2 = money2 + forest2;
+				moneygame1.innerHTML = money1;
+				moneygame2.innerHTML = money2;
+			}
+			// Ферма
+			if(num1 == 2){
+				money1 = money1 + farm1;
+				money2 = money2 + farm2;
+				moneygame1.innerHTML = money1;
+				moneygame2.innerHTML = money2;
+			}
+			// Шахта
+			if(num1 == 9){
+				money1 = money1 + mine1;
+				money2 = money2 + mine2;
+				moneygame1.innerHTML = money1;
+				moneygame2.innerHTML = money2;
+			}
+			// мебельная фабрика
+			if(num1 == 8){
+				money1 = money1 + factory1;
+				moneygame1.innerHTML = money1;
+			}
+			//кафе
+			if(num1 == 3){
+				if(money1 >= cafe2){
+					money2 += cafe2;
+					money1 -= cafe2;
+					moneygame2.innerHTML = money2;
+					moneygame1.innerHTML = money1;
+				}
+			}
+			//яблоневый сад
+			if(num1 == 10){
+				money1 = money1 + apple1;
+				money2 = money2 + apple2;
+				moneygame1.innerHTML = money1;
+				moneygame2.innerHTML = money2;
+			}
+			//Закусочная
+			if(num1 == 10 || num1 == 9){
+				if(money1 >=2){
+					money2 += cus2;
+					money1 -= cus2;
+					moneygame2.innerHTML = money2;
+					moneygame1.innerHTML = money1;
+				}
+			}
+			// Сыроварня
+			if(num1 == 7){
+				money1 += chees1;
+				moneygame1.innerHTML = money1;
+			}
+			// Овощной рынок
+			if(num1 == 11 || num1 == 12){
+				money1 += vegetable1;
+				moneygame1.innerHTML = money1;
+			}
+			//Стадион
+			if(num1 == 6){
+				if(money2 >= 2){
+					money2 -= stadion1;
+					money1 += stadion1;
+					moneygame2.innerHTML = money2;
+					moneygame1.innerHTML = money1;
+				}
+			}
+			//Телецентр
+			if(num1 == 6){
+				if(money1 >= 5){
+					money1 += tele1;
+					money2 -= tele1;
+					moneygame2.innerHTML = money2;
+					moneygame1.innerHTML = money1;
+				}
+			}
+				c1++;
+				if(c1 == 1){
+					document.getElementById('g1').disabled = true;
+					if(vocsal1 == true){
+						document.getElementById('gg1').disabled = true;
+					}
+					c1 = 0;
+				}		
+		
+	}
+		
+	function cube2x1(){
+		var num2 = Math.floor(Math.random() * 6) + 1;
+		alert(num2);
+		// пекарня доход
+			if(num2 == 2){
+				money2 = money2 + pecar2;
+				moneygame2.innerHTML = money2;
+			}
+			else if(num2 == 3){
+				money2 = money2 + pecar2;
+				moneygame2.innerHTML = money2;
+			}
+			// пшеничное поле доход
+			if(num2 == 1){
+				money1 = money1 + ppole1;
+				money2 = money2 + ppole2;
+				moneygame1.innerHTML = money1;
+				moneygame2.innerHTML = money2;
+			}
+			// Магазин
+			if(num2 == 4){
+				money2 = money2 + shop2;
+				moneygame2.innerHTML = money2;
+			}
+			// Лес
+			if(num2 == 5){
+				money1 = money1 + forest2;
+				money2 = money2 + forest2;
+				moneygame1.innerHTML = money1;
+				moneygame2.innerHTML = money2;
+			}
+			// Ферма
+			if(num2 == 2){
+				money1 = money1 + farm1;
+				money2 = money2 + farm2;
+				moneygame1.innerHTML = money1;
+				moneygame2.innerHTML = money2;
+			}
+			//кафе
+			if(num2 == 3){
+				if(money2 >= cafe1){
+					money2 -= cafe1;
+					money1 += cafe1;
+					moneygame2.innerHTML = money2;
+					moneygame1.innerHTML = money1;
+				}
+			}
+			//Стадион
+			if(num2 == 6){
+				if(money1 >= 2){
+					money1 -= stadion2;
+					money2 += stadion2;
+					moneygame2.innerHTML = money2;
+					moneygame1.innerHTML = money1;
+				}
+			}
+			//Телецентр
+			if(num2 == 6){
+				if(money1 >= 5){
+					money1 -= tele2;
+					money2 += tele2;
+					moneygame2.innerHTML = money2;
+					moneygame1.innerHTML = money1;
+				}
+			}
+			c2++;
+			if(c2 == 1){
+				document.getElementById('g2').disabled = true;
+				if(vocsal2 == true){
+					document.getElementById('gg2').disabled = true;
+				}
+				c2 = 0;
+			}			
+	}
+	function cube2x2(){
+		var num2 = Math.floor(Math.random() * (12-2+1) + 2);
+		alert(num2);
+		// пекарня доход
+		if(num2 == 2){
+			money2++;
+			moneygame2.innerHTML = money2;
+		}
+		else if(num2 == 3){
+			money2++;
+			moneygame2.innerHTML = money2;
+		}
+		// Магазин
+		if(num2 == 4){
+			money2 = money2 + shop2;
+			moneygame2.innerHTML = money2;
+		}
+		// Лес
+		if(num2 == 5){
+			money1 = money1 + forest2;
+			money2 = money2 + forest2;
+			moneygame1.innerHTML = money1;
+			moneygame2.innerHTML = money2;
+		}
+		// Ферма
+		if(num2 == 2){
+			money1 = money1 + farm1;
+			money2 = money2 + farm2;
+			moneygame1.innerHTML = money1;
+			moneygame2.innerHTML = money2;
+		}
+		// Шахта
+		if(num2 == 9){
+			money1 = money1 + mine1;
+			money2 = money2 + mine2;
+			moneygame1.innerHTML = money1;
+			moneygame2.innerHTML = money2;
+		}
+		// мебельная фабрика
+		if(num2 == 8){
+			money2 = money2 + factory2;
+			moneygame2.innerHTML = money2;
+		}
+		//кафе
+		if(num2 == 3){
+			if(money2 >= cafe1){
+				money2 -= cafe1;
+				money1 += cafe1;
+				moneygame2.innerHTML = money2;
+				moneygame1.innerHTML = money1;
+			}
+		}
+		//яблоневый сад
+		if(num2 == 10){
+				money1 = money1 + apple1;
+				money2 = money2 + apple2;
+				moneygame1.innerHTML = money1;
+				moneygame2.innerHTML = money2;
+		}
+		//Закусочная
+		if(num2 == 10 || num2 == 9){
+			if(money2 >=2){
+				money1 += cus1;
+				money2 -= cus1;
+				moneygame2.innerHTML = money2;
+				moneygame1.innerHTML = money1;
+			}
+		}
+		// Сыроварня
+		if(num2 == 7){
+			money2 += cheese2;
+			moneygame2.innerHTML = money2;
+		}
+		// Овощной рынок
+		if(num2 == 11 || num2 == 12){
+			money2 += vegetable2;
+			moneygame2.innerHTML = money2;
+		}
+		//Стадион
+		if(num2 == 6){
+			if(money1 >= 2){
+				money1 -= stadion2;
+				money2 += stadion2;
+				moneygame2.innerHTML = money2;
+				moneygame1.innerHTML = money1;
+			}
+		}
+		//Телецентр
+		if(num2 == 6){
+			if(money1 >= 5){
+				money1 -= tele2;
+				money2 += tele2;
+				moneygame2.innerHTML = money2;
+				moneygame1.innerHTML = money1;
+			}
+		}
+			c2++;
+			if(c2 == 1){
+				document.getElementById('g2').disabled = true;
+				if(vocsal2 == true){
+					document.getElementById('gg2').disabled = true;
+				}
+				c2 = 0;
+			}		
+	}
+
+				// Покупка пекарни
+
+	var pecar1 = 1;
+	var pecar2 = 1;
+
+// Для тц
+	var pecar2Profit = 1;
+	var pecar1Profit = 1;
+
+	function pecarBuy(){
+		if((pecar2+pecar1) < 8){
+			if(g2 == false){
+				if(money2 >= 1){
+					money2--;
+					pecar2 += pecar2Profit;
+					alert('Игрок 2 приобрел пекарню');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.
+
+					document.querySelector('#pecarCol-vo2').innerHTML = pecar2;
+				}
+			}
+			else//(g1 == false)
+			{
+				if(money1 >= 1){
+					money1--;
+					pecar1 += pecar1Profit;
+					alert('Игрок 1 приобрел пекарню');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.
+					document.querySelector('#pecarCol-vo1').innerHTML = pecar1;
+				}
+			}
+			hod();
+		}else{
+			alert('Карточки закончились!');
+		}
+	}
+
+	// покупка поля
+	var ppole1 = 1;
+	var ppole2 = 1;
+
+	function poleBuy(){
+		if((ppole2+ppole1) < 8 ){
+			if(g2 == false){
+				if(money2 >= 1){
+					money2--;
+					ppole2++;
+					vegetable2 += 2;
+					alert('Игрок 2 приобрел пшеничное поле');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.					
+					document.querySelector('#poleCol-vo2').innerHTML = ppole2;
+				}
+			}
+			else if(g1 == false){
+				if(money1 >= 1){
+					money1--;
+					ppole1++;
+					vegetable1 += 2;
+					alert('Игрок 1 приобрел пшеничное поле');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.					
+					document.querySelector('#poleCol-vo1').innerHTML = ppole1;
+				}
+			}
+			hod();
+		}else{
+			alert('Карточки закончились!');
+		}
+	}
+	var left1 = 70;
+	var left2 = 70;
+
+	// Покупка магазина
+	var shop1 = 0;
+	var shop2 = 0;
+
+	function shopBuy(){
+		if((shop1+shop2)/3 < 6){//роверяем сколько карточек куплено всего(нажато на кнопку)
+			if(g2 == false){//проверяем какой игрок ходит
+				if(money2 >= 2){
+					money2 = money2 - 2;
+					shop2 = shop2 + 3;
+					alert('Игрок 2 приобрел магазин');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.
+					document.querySelector('#shopCol-vo2').innerHTML = Math.ceil(shop2/3);
+					// вставить карточку
+					if(shop2 <= 3){	
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/МАГАЗИН.png" alt="">';
+						document.querySelector('#shopCol-vo2').style.left = left2 + 'px';
+						left2 += 140;
+					}
+				}
+			}
+			else if(g1 == false){//проверяем какой игрок ходит
+				if(money1 >= 2){
+					money1 = money1 - 2;
+					shop1 = shop1 + 3;
+					alert('Игрок 1 приобрел магазин');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.
+					document.querySelector('#shopCol-vo1').innerHTML = shop1/3;
+					// вставить карточку
+					if(shop1 <= 3){
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/МАГАЗИН.png" alt="">';
+						document.querySelector('#shopCol-vo1').style.left = left1 + 'px';
+						left1 += 140;
+					}
+				}
+			}
+			hod();
+		}else{
+			alert('Карточки закончились!');
+		}
+	}
+	// покупка леса(заповедника)
+	var forest2 = 0;
+	var forest1 = 0;
+
+	function forestBuy(){
+		if ((forest2+forest1) < 6) {
+			if(g2 == false){
+				if(money2 >= 3){
+					money2 = money2 - 3;
+					forest2 = forest2 + 1;
+					factory2 += 3;
+					alert('Игрок 2 приобрел лес(заповедник)');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.
+					document.querySelector('#forestCol-vo2').innerHTML = forest2;
+					// вставить картинку
+					if(forest2 <= 1){
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/ЛЕС.png" alt="">';
+						document.querySelector('#forestCol-vo2').style.left = left2 + 'px';
+						left2 += 140;
+					}
+				}
+			}
+			else if(g1 == false){
+				if(money1 >= 3){
+					money1 = money1 - 3;
+					forest1 = forest1 + 1;
+					factory1 += 3;					
+					alert('Игрок 1 приобрел лес(заповедник)');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.
+
+					document.querySelector('#forestCol-vo1').innerHTML = forest1;
+					// вставить картинку
+					if(forest1 <= 1){
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/ЛЕС.png" alt="">';
+						document.querySelector('#forestCol-vo1').style.left = left1 + 'px';
+						left1 += 140;
+					}
+				}
+			}
+			hod();
+		}else{
+			alert('Карточки закончились!');
+		}
+	}
+// Покупка фермы
+	var farm2 = 0;
+	var farm1 = 0;
+	function farmBuy(){
+		if((farm2+farm1)<6){
+			if(g2 == false){
+				if(money2 >= 1){
+					money2--;
+					farm2++;
+					cheese2 = 3*farm2;
+					alert('Игрок 2 приобрел ферму');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.
+					document.querySelector('#farmCol-vo2').innerHTML = farm2;
+					// вставить картинку
+					if(farm2 <= 1){
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/ФЕРМА.png" alt="">';
+						document.querySelector('#farmCol-vo2').style.left = left2 + 'px';
+						left2 += 140;
+					}
+				}
+			}
+			else if(g1 == false){
+				if(money1 >= 1){
+					money1--;
+					farm1++;
+					cheese1 = 3*farm1;
+					alert('Игрок 1 приобрел ферму');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.
+					document.querySelector('#farmCol-vo1').innerHTML = farm1;
+					// вставить картинку
+					if(farm1 <= 1){
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/ФЕРМА.png" alt="">';
+						document.querySelector('#farmCol-vo1').style.left = left1 + 'px';
+						left1 += 140;
+					}
+				}
+			}
+			hod();
+		}else{
+			alert('Карточки закончились!');
+		}
+	}
+	var mine2 = 0;
+	var mine1 = 0;
+	function mineBuy(){
+		if((mine2+mine1)/5 < 6){
+			if(g2 == false){
+				if(money2 >= 6){
+					money2 = money2 - 6;
+					mine2 = mine2 + 5;
+					factory2 += 3;	
+					alert('Игрок 2 приобрел шахту');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.
+					document.querySelector('#mineCol-vo2').innerHTML = mine2 / 5;
+					// вставить картинку 
+					if(mine2 <= 5){
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/ШАХТА.png" alt="">';
+						document.querySelector('#mineCol-vo2').style.left = left2 + 'px';
+						left2 += 140;
+					}
+				}
+			}
+			else if(g1 == false){
+				if(money1 >= 6){
+					money1 = money1 - 6;
+					mine1 = mine1 + 5;
+					factory1 += 3;	
+					alert('Игрок 1 приобрел шахту');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.
+					document.querySelector('#mineCol-vo1').innerHTML = mine1 / 5;
+					// вставить картинку
+					if(mine1 <= 5){
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/ШАХТА.png" alt="">';
+						document.querySelector('#mineCol-vo1').style.left = left1 + 'px';
+						left1 += 140;
+					}
+				}
+			}
+			hod();
+		}else{
+			alert('Карточки закончились!');
+		}
+	}
+	var vocsal1 = false;
+	var vocsal2 = false;
+	function vocBuy(){
+		if(g2 == false){
+			if(vocsal2 == false){
+				if(money2 >= 4){
+					vocsal2 = true;
+					money2 -= 4;
+					alert('Игрок 2 приобрел вокзал');
+					moneygame2.innerHTML = money2;
+					// вставить картинку 
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/Вокзал.png" alt="">';	
+						left2 += 140;
+				}
+			}
+		}
+		else if(g1 == false){
+			if(vocsal1 == false){
+				if(money1 >= 4){
+					vocsal1 = true;
+					money1 -= 4;
+					alert('Игрок 1 приобрел вокзал');
+					moneygame1.innerHTML = money1;
+					// вставить картинку
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/Вокзал.png" alt="">';
+						left1 += 140;
+					}
+				}
+			}
+		hod();
+	}
+
+// Покупка мебельной фабрики
+	var factory1 = 0;
+	var factory2 = 0;
+	var fac1 = 0;
+	var fac2 = 0;
+
+	function factoryBuy(){
+		if((fac2+fac1) < 6){
+			if(g2 == false){
+				if(money2 >= 3){
+					money2 -= 3;
+					factory2 = factory2 + (3*mine2/5) + (3*forest2);
+					fac2++;
+					alert('Игрок 2 приобрел мебельную фабрику');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.
+					document.querySelector('#factoryCol-vo2').innerHTML = fac2;
+					// вставить карточку
+					if(fac2 <= 1){	
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/МЕБЕЛЬНАЯ ФАБРИКА.png" alt="">';
+						document.querySelector('#factoryCol-vo2').style.left = left2 + 'px';
+						left2 += 140;
+					}
+				}
+			}
+			else if(g1 == false){
+				if(money1 >= 3){
+					money1 -= 3;
+					factory1 = factory1 + (3*mine1/5) + (3*forest1);
+					fac1++;
+					alert('Игрок 1 приобрел мебельную фабрику');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.
+					document.querySelector('#factoryCol-vo1').innerHTML = fac1;
+					// вставить карточку
+					if(fac1 <= 1){
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/МЕБЕЛЬНАЯ ФАБРИКА.png" alt="">';
+						document.querySelector('#factoryCol-vo1').style.left = left1 + 'px';
+						left1 += 140;
+					}
+				}
+			}
+			hod();
+		}else{
+			alert('Карточки закончились!');
+		}
+	}
+// Покупка тц
+	var tc1 = false;
+	var tc2 = false;
+
+	function centerBuy(){
+		if(tc2 == false){
+			if(g2 == false){
+				if(money2 >= 10){
+					tc2 = true;
+					money2 -= 10;
+					pecar2+=pecar2;//для пекарни
+					pecar2Profit++;//для пекарни
+					// shop2+=shop2;//для магазина
+					shop2Profit++;//для магазина				
+					alert('Игрок 2 приобрел торговый центер');
+					moneygame2.innerHTML = money2;
+					// вставить картинку 
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/Торговый центер.png" alt="">';	
+						left2 += 140;					}
+			}
+		}
+		else if(g1 == false){
+			if(tc1 == false){
+				if(money1 >= 10){
+					tc1 = true;
+					money1 -= 10;
+					pecar1+=pecar1;//для пекарни
+					pecar2Profit++;//для пекарни
+					shop1+=shop1;//для магазина
+					shop2Profit++;//для магазина
+					alert('Игрок 1 приобрел вокзал');
+					moneygame1.innerHTML = money1;
+					// вставить картинку
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/Торговый центер.png" alt="">';
+						left1 += 140;
+					
+				}
+			}	
+		}
+		hod();
+	}
+	// cafe
+	var cafe2 = 0;
+	var cafe1 = 0;
+	function cafeBuy(){
+		if((cafe2+cafe1) < 6){
+			if(g2 == false){
+				if(money2 >= 2){
+					money2 = money2 - 2;
+					cafe2++;	
+					alert('Игрок 2 приобрел кафе');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.
+					document.querySelector('#cafeCol-vo2').innerHTML = cafe2;
+					// вставить картинку 
+					if(cafe2 <= 1){
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/КАФЕ.png" alt="">';
+						document.querySelector('#cafeCol-vo2').style.left = left2 + 'px';
+						left2 += 140;
+					}
+				}
+			}
+			else if(g1 == false){
+				if(money1 >= 2){
+					money1 -= 2;
+					cafe1++;
+					alert('Игрок 1 приобрел кафе');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.
+					document.querySelector('#cafeCol-vo1').innerHTML = cafe1;
+					// вставить картинку
+					if(cafe1 <= 1){
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/КАФЕ.png" alt="">';
+						document.querySelector('#cafeCol-vo1').style.left = left1 + 'px';
+						left1 += 140;
+					}
+				}
+			}
+			hod();
+		}else{
+			alert('Карточки закончились!');
+		}
+	}
+	//apple
+	var apple2 = 0;
+	var apple1 = 0;
+	function appleBuy(){
+		if((apple1+apple2)/3 < 6){
+			if(g2 == false){
+				if(money2 >= 3){
+					money2 -= 3;
+					apple2 += 3;	
+					vegetable2 += 2*ppole2 + 2*apple2;
+					alert('Игрок 2 приобрел яблоневый сад');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.
+					document.querySelector('#appleCol-vo2').innerHTML = apple2/3;
+					// вставить картинку 
+					if(apple2 <= 3){
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/ЯБЛОНЕВЫЙ САД.png" alt="">';
+						document.querySelector('#appleCol-vo2').style.left = left2 + 'px';
+						left2 += 140;
+					}
+				}
+			}
+			else if(g1 == false){
+				if(money1 >= 3){
+					money2 -= 3;
+					apple1 += 3;
+					vegetable1 += 2*ppole1 + 2*apple1;
+					alert('Игрок 1 приобрел яблоневый сад');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.
+					document.querySelector('#appleCol-vo1').innerHTML = apple1/3;
+					// вставить картинку
+					if(apple1 <= 3){
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/ЯБЛОНЕВЫЙ САД.png" alt="">';
+						document.querySelector('#appleCol-vo1').style.left = left1 + 'px';
+						left1 += 140;
+					}
+				}
+			}
+			hod();
+		}else{
+			alert("Карточки закончились!");
+		}		
+	}
+
+	// Закусочная
+	var cus2 = 0;
+	var cus1 = 0;
+	function cusBuy(){
+		if((cus2+cus1)/2 <6){
+			if(g2 == false){
+				if(money2 >= 3){
+					money2 -= 3;
+					cus2 += 2;	
+					alert('Игрок 2 приобрел закусочную');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.
+					document.querySelector('#cusCol-vo2').innerHTML = cus2/2;
+					// вставить картинку 
+					if(cus2 <= 2){
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/ЗАКУСОЧНАЯ.png" alt="">';
+						document.querySelector('#cusCol-vo2').style.left = left2 + 'px';
+						left2 += 140;
+					}
+				}
+			}
+			else if(g1 == false){
+				if(money1 >= 3){
+					money1 -= 3;
+					cus1 += 2;
+					alert('Игрок 1 приобрел закусочную');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.
+					document.querySelector('#cusCol-vo1').innerHTML = cus1/2;
+					// вставить картинку
+					if(cus1 <= 2){
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/ЗАКУСОЧНАЯ.png" alt="">';
+						document.querySelector('#cusCol-vo1').style.left = left1 + 'px';
+						left1 += 140;
+					}
+				}
+			}
+			hod();
+		}else{
+			alert('Карточки закончились!');
+		}
+	}
+
+	// Покупка сыроварни
+	var cheese1 = 0;
+	var cheese2 = 0;
+	var chee1 = 0;
+	var chee2 = 0;
+
+	function cheeseBuy(){
+		if((chee2+chee1) < 6){
+			if(g2 == false){
+				if(money2 >= 5){
+					money2 -= 5;
+					cheese2 += 3*farm2;
+					chee2++;
+					alert('Игрок 2 приобрел сыроварню');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.
+					document.querySelector('#cheeseCol-vo2').innerHTML = chee2;
+					// вставить карточку
+					if(chee2 <= 1){	
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/СЫРОВАРНЯ.png" alt="">';
+						document.querySelector('#cheeseCol-vo2').style.left = left2 + 'px';
+						left2 += 140;
+					}
+				}
+			}
+			else if(g1 == false){
+				if(money1 >= 5){
+					money1 -= 5;
+					cheese1 += 3*farm1;
+					chee1++;
+					alert('Игрок 1 приобрел сыроварню');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.
+					document.querySelector('#cheeseCol-vo1').innerHTML = chee1;
+					// вставить карточку
+					if(chee1 <= 1){
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/СЫРОВАРНЯ.png" alt="">';
+						document.querySelector('#cheeseCol-vo1').style.left = left1 + 'px';
+						left1 += 140;
+					}
+				}
+			}
+			hod();
+		}else{
+			alert('Карточки закончились!');
+		}
+	}
+
+	// Покупка овощного рынка
+	var vegetable1 = 0;
+	var vegetable2 = 0;
+	var vegcolvo1 = 0;
+	var vegcolvo2 = 0;
+
+	function vegetableBuy(){
+		if((vegcolvo2 + vegcolvo1) < 6){
+			if(g2 == false){
+				if(money2 >= 2){
+					money2 -= 2;
+					vegetable2 += 2*ppole2 + 2*apple2;
+					vegcolvo2++;
+					alert('Игрок 2 приобрел овощной рынок');
+					moneygame2.innerHTML = money2;
+					// кол-во шт.
+					document.querySelector('#vegetableCol-vo2').innerHTML = vegcolvo2;
+					// вставить карточку
+					if(vegcolvo2 <= 1){	
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/ОВОЩНОЙ РЫНОК.png" alt="">';
+						document.querySelector('#vegetableCol-vo2').style.left = left2 + 'px';
+						left2 += 140;
+					}
+				}
+			}
+			else if(g1 == false){
+				if(money1 >= 2){
+					money1 -= 2;
+					vegetable1 += 2*ppole1 + 2*apple1;
+					vegcolvo1++;
+					alert('Игрок 1 приобрел овощной рынок');
+					moneygame1.innerHTML = money1;
+					// кол-во шт.
+					document.querySelector('#vegetableCol-vo1').innerHTML = vegcolvo1;
+					// вставить карточку
+					if(vegcolvo1 <= 1){
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/ОВОЩНОЙ РЫНОК.png" alt="">';
+						document.querySelector('#vegetableCol-vo1').style.left = left1 + 'px';
+						left1 += 140;
+					}
+				}
+			}
+			hod();
+		}else{
+			alert('Карточки закончились!');
+		}
+	}
+	//Стадион
+	var stadion1 = 0;
+	var stadion2 = 0;
+
+	function stadionBuy(){
+		if(g2 == false){
+			if(stadion2 < 2){
+				if(money2 >= 6){
+					money2 -= 6;
+					stadion2 += 2;
+					alert('Игрок 2 приобрел стадион');
+					moneygame2.innerHTML = money2;
+					// вставить карточку
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/СТАДИОН.png" alt="">';
+						left2 += 140;
+				}
+			}
+		}
+		else if(g1 == false){
+			if(stadion1 < 2){
+				if(money1 >= 6){
+					money1 -= 6;
+					stadion1 += 2;
+					alert('Игрок 1 приобрел стадион');
+					moneygame1.innerHTML = money1;
+					// вставить карточку
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/СТАДИОН.png" alt="">';
+						left1 += 140;
+				}
+			}
+		}
+		hod();
+	}
+	
+
+	//Стадион
+	var tele1 = 0;
+	var tele2 = 0;
+
+	function teleBuy(){
+		if(g2 == false){
+			if(tele2<5){
+				if(money2 >= 7){
+					money2 -= 7;
+					tele2 += 5;
+					alert('Игрок 2 приобрел телецентр');
+					moneygame2.innerHTML = money2;
+					// вставить карточку
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/ТЕЛЕЦЕНТР.png" alt="">';
+						left2 += 140;
+				}
+			}
+		}
+		else if(g1 == false){
+			if(tele1<5){
+				if(money1 >= 7){
+					money1 -= 7;
+					tele1 += 5;
+					alert('Игрок 1 приобрел телецентр');
+					moneygame1.innerHTML = money1;
+					// вставить карточку
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/ТЕЛЕЦЕНТР.png" alt="">';
+						left1 += 140;
+				}
+			}
+		}
+		hod();	
+	}
+	//Торговый центр
+	var park1 = false;
+	var park2 = false;
+	function parkBuy(){
+		if(g2 == false){
+			if(park2 == false){
+				if(money2 >= 22){
+					money2 -= 22;
+					park2 = true;
+					alert('Игрок 2 приобрел парк развлечений');
+					moneygame2.innerHTML = money2;
+					// вставить карточку
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/Парк развлечений.png" alt="">';
+						left2 += 140;
+				}
+			}
+		}
+		else if(g1 == false){
+			if(park1 == false){
+				if(money1 >= 22){
+					money1 -= 22;
+					park1 = true;
+					alert('Игрок 1 приобрел парк развлечений');
+					moneygame1.innerHTML = money1;
+					// вставить карточку
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/Парк развлечений.png" alt="">';
+						left1 += 140;
+				}
+			}
+		}
+		hod();
+	}
+	//телебашня
+	var tv1 = false;
+	var tv2 = false;
+	function tvBuy(){
+		if(g2 == false){
+			if(tv2 == false){
+				if(money2 >= 16){
+					money2 -= 16;
+					tv2 = true;
+					alert('Игрок 2 приобрел телебашню');
+					moneygame2.innerHTML = money2;
+					// вставить карточку
+						document.querySelector('#gamer2').innerHTML += '<img class="img" src="images/Телебашня.png" alt="">';
+						left2 += 140;
+				}
+			}
+		}
+		else if(g1 == false){
+			if(tv1 == false){
+				if(money1 >= 16){
+					money1 -= 16;
+					tv1 = true;
+					alert('Игрок 1 приобрел телебашню');
+					moneygame1.innerHTML = money1;
+					// вставить карточку
+						document.querySelector('#gamer1').innerHTML += '<img class="img" src="images/Телебашня.png" alt="">';
+						left1 += 140;
+				}
+			}
+		}
+		hod();
+	}
+
+
+	// Количество карточек вначале
+	document.querySelector('#pecarCol-vo2').innerHTML = pecar2;
+	document.querySelector('#pecarCol-vo1').innerHTML = pecar1;
+	document.querySelector('#poleCol-vo2').innerHTML = ppole2;
+	document.querySelector('#poleCol-vo1').innerHTML = ppole1;
+</script>
+</body>
+</html>
